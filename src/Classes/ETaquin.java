@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class ETaquin {
 
     private int[][] Tab;
-    private int taille = 0, profondeur  = 0, x_vide = 0,y_vide = 0;
+    private int taille, profondeur , x_vide = 0,y_vide = 0;
     private ArrayList regles = new <Integer>ArrayList();
     private ETaquin pred = null;
     public int getProfondeur() {
@@ -116,6 +116,35 @@ public class ETaquin {
             }
         }
         return nbr;
+    }
+
+    private static int H_Manhattan(ETaquin etat , ETaquin etat_but)
+    {
+        int nb = 0 ;
+        int nb_temp = 0 ;
+        int ligne_init=0 , ligne_but=0 , colonne_init=0 , colonne_but=0 ;
+
+        for(int n = 1 ; n < etat.getTaille()*etat.getTaille() ; n++)  {
+
+            for(int i = 0 ; i < etat.getTaille(); i++){
+
+                for(int j = 0 ; j < etat.getTaille() ; j++){
+                    if(etat.getTab()[i][j] == n) {
+                        ligne_init = i ;
+                        colonne_init = j;
+                    }
+
+                    if(etat_but.getTab()[i][j] == n){
+                        ligne_but = i ;
+                        colonne_but = j ;
+                    }
+                }
+            }
+            nb_temp = Math.abs(ligne_init-ligne_but) + Math.abs(colonne_init-colonne_but) ;
+            nb = nb + nb_temp ;
+        }
+
+        return nb ;
     }
 
     public int Evaluate(ETaquin but){
