@@ -1,10 +1,10 @@
 package Classes;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.*;
 
 public class main {
-
-
 
 
     public static void main(String[] args) {
@@ -32,6 +32,15 @@ public class main {
         regles = Algo1.Resolution(5);
         System.out.println("\nL'ensemble de regles qu'on doit appliquer est (BFS): "
                 + (regles!=null?regles.toString():"Etat non trouve(Changez la profondeur pour elargire le champs de recherche) "));
-
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setTitle("Jeu du taquin");
+            frame.setResizable(false);
+            frame.add(new Projet.mohamedSadadou.fr.Taquin(3, 550, 30), BorderLayout.CENTER);
+            frame.pack();
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        });
     }
 }
