@@ -185,5 +185,15 @@ public class ETaquin {
         return regles;
     }
 
+    public String ToTabString(){
+        String str = "";
+        for(int i = 0;i<this.taille;i++){
+            for(int j= 0;j<this.taille;j++){
+                    str += this.Tab[i][j];
+            }
+        }
+        return str;
+    }
+
 
 }

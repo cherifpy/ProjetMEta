@@ -39,6 +39,10 @@ public class AEtoile {
             closes.add(this.debut);
 
             while(true) {
+
+                if(closes.isEmpty()){
+                    return null;
+                }
                 inter = (ETaquin) closes.remove(0);
                 opens.add(inter);
                 if(Arrays.deepEquals(inter.getTab(),this.fin.getTab())){
