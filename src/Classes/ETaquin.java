@@ -83,22 +83,22 @@ public class ETaquin {
 
         if(regle == 1){
             this.Tab[this.x_vide][this.y_vide] = this.Tab[this.x_vide][this.y_vide - 1];
-            this.Tab[this.x_vide][this.y_vide - 1] = -1;
+            this.Tab[this.x_vide][this.y_vide - 1] = 0;
             this.y_vide -=1;
         }
         if(regle == 2){
             this.Tab[this.x_vide][this.y_vide] = this.Tab[this.x_vide][this.y_vide + 1 ];
-            this.Tab[this.x_vide][this.y_vide + 1] = -1;
+            this.Tab[this.x_vide][this.y_vide + 1] = 0;
             this.y_vide +=1;
         }
         if(regle == 3){
             this.Tab[this.x_vide][this.y_vide] = this.Tab[this.x_vide - 1][this.y_vide];
-            this.Tab[this.x_vide - 1][this.y_vide] = -1;
+            this.Tab[this.x_vide - 1][this.y_vide] = 0;
             this.x_vide-=1;
         }
         if (regle == 4){
             this.Tab[this.x_vide][this.y_vide] = this.Tab[this.x_vide + 1][this.y_vide];
-            this.Tab[this.x_vide + 1][this.y_vide] = -1;
+            this.Tab[this.x_vide + 1][this.y_vide] = 0;
             this.x_vide+=1;
         }
 
@@ -110,7 +110,7 @@ public class ETaquin {
         int nbr = 0;
         for(int i = 0;i<this.taille;i++){
             for(int j = 0;j<this.taille;j++){
-                if((this.Tab[i][j] != -1) && (this.Tab[i][j] != (but.getTab())[i][j])){
+                if((this.Tab[i][j] != 0) && (this.Tab[i][j] != (but.getTab())[i][j])){
                     nbr++;
                 }
             }

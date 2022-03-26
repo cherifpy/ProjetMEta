@@ -5,22 +5,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Queue;
 
-public class BFSAlgo {
+public class BFSAlgo extends  Algoitheme {
 
-    private ETaquin debut;
-    private ETaquin fin;
-
-    public ETaquin getDebut() {return debut;}
-    public void setDebut(ETaquin debut) {this.debut = debut;}
-
-    public ETaquin getFin() {return fin;}
-    public void setFin(ETaquin fin) {this.fin = fin;}
 
     BFSAlgo(ETaquin debut,ETaquin fin){
-        this.debut = debut;
-        this.fin = fin;
-
-
+        super(debut,fin);
     }
 
 
@@ -28,11 +17,11 @@ public class BFSAlgo {
         ETaquin temp = null;
         ArrayList<ETaquin> file_etat = new ArrayList<ETaquin>();
         ArrayList<Integer> regles = new ArrayList<Integer>();
-        file_etat.add(this.debut);
+        file_etat.add(this.getDebut());
         while (!file_etat.isEmpty()){
             temp = file_etat.remove(0);
             regles = temp.getRegles_App();
-            if(Arrays.deepEquals(temp.getTab(),this.fin.getTab())){
+            if(Arrays.deepEquals(temp.getTab(),this.getFin().getTab())){
 
                 return temp.getRegles();
             }

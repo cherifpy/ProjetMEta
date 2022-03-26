@@ -4,21 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class AEtoile {
+public class AEtoile extends Algoitheme{
 
-    private ETaquin debut;
-    private ETaquin fin;
-
-    public ETaquin getDebut() {return debut;}
-    public void setDebut(ETaquin debut) {this.debut = debut;}
-
-    public ETaquin getFin() {return fin;}
-    public void setFin(ETaquin fin) {this.fin = fin;}
 
     AEtoile(ETaquin debut,ETaquin fin){
-        this.debut = debut;
-        this.fin = fin;
 
+        super(debut,fin);
     }
 
 
@@ -31,12 +22,12 @@ public class AEtoile {
         ETaquin inter = null;
         ArrayList <Integer>regle_ = new ArrayList<Integer>();
 
-        if(this.debut.getTab() == this.fin.getTab()){
+        if(this.getDebut().getTab() == this.getFin().getTab()){
             System.out.println("Le but est deja attient aucun mouvement a faire!");
             return new ArrayList<Integer>();
 
         }else{
-            closes.add(this.debut);
+            closes.add(this.getDebut());
 
             while(true) {
 
@@ -45,7 +36,7 @@ public class AEtoile {
                 }
                 inter = (ETaquin) closes.remove(0);
                 opens.add(inter);
-                if(Arrays.deepEquals(inter.getTab(),this.fin.getTab())){
+                if(Arrays.deepEquals(inter.getTab(),this.getFin().getTab())){
                     System.out.println("\nEtat but:");
                     inter.PrintTaquin();
                     break;
@@ -66,7 +57,7 @@ public class AEtoile {
                         closes.add(new_);
                     }
                 }
-                Collections.sort(closes, new ComparatorTaquin(fin));
+                Collections.sort(closes, new ComparatorTaquin(this.getFin()));
             }
         }
 

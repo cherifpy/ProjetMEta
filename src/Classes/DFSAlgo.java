@@ -1,31 +1,47 @@
 package Classes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
-public class DFSAlgo {
+public class DFSAlgo extends Algoitheme{
 
-    private ETaquin debut;
-    private ETaquin fin;
 
-    public ETaquin getDebut() {return debut;}
-    public void setDebut(ETaquin debut) {this.debut = debut;}
+    private ArrayList regles;
+    private ETaquin temp_taquin;
+    private boolean trouve_ = false;
 
-    public ETaquin getFin() {return fin;}
-    public void setFin(ETaquin fin) {this.fin = fin;}
 
     DFSAlgo(ETaquin debut,ETaquin fin){
-        this.debut = debut;
-        this.fin = fin;
+        super(debut,fin);
+    }
 
+    public ArrayList<Integer> Resolution(int profondeur){
+
+        Profondeur_dabord(this.getDebut(), profondeur);
+
+        return this.regles;
     }
 
 
-    public ArrayList<Integer> Resolution(){
+    private void Profondeur_dabord(ETaquin depart, int max_prof){
 
 
-
-
-
-        return null;
+        ArrayList<Integer> regles_app;
+        if(!(depart.getProfondeur() > max_prof)){
+            if(Arrays.deepEquals(depart.getTab(),this.getFin().getTab())){
+                this.trouve_ = true;
+                this.regles = depart.getRegles();
+            }else{
+                regles_app = depart.getRegles_App();
+                for(int i = 0; (i<regles_app.size()) && (!this.trouve_);i++){
+                    this.temp_taquin = new ETaquin(depart,(int) regles_app.get(i));
+                    Profondeur_dabord(this.temp_taquin,max_prof);
+                }
+            }
+        }
     }
+
+
+
+
 }
